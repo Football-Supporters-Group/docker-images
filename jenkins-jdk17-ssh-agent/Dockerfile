@@ -9,4 +9,7 @@ RUN adduser jenkins docker
 RUN chmod +x ./install-mvn.sh
 RUN ./install-mvn.sh
 
+VOLUME /var/run/docker.sock
+RUN chmod 666 /var/run/docker.sock
+
 ENTRYPOINT ["setup-sshd"]
