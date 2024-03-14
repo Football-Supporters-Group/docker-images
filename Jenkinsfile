@@ -25,13 +25,6 @@ pipeline {
 
     stages {
         stage('Build Docker Image') {
-            when {
-                branch comparator: 'GLOB', pattern: '**/release/*'
-                beforeOptions true
-                expression {
-                    return env.shouldBuild != "false"
-                }
-            }
             steps {
                 sh '''
                     find jenkins-* -maxdepth 1 -type d \\( ! -name . \\) -exec bash -c "cd {} && pwd && \\
