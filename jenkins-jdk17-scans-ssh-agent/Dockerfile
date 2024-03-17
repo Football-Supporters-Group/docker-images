@@ -1,6 +1,6 @@
 FROM jenkins/ssh-agent:alpine-jdk17 as agent
-COPY ../scripts/install-mvn.sh install-mvn.sh
-COPY ../scripts/prep-docker.sh prep-docker.sh
+COPY ./scripts/install-mvn.sh install-mvn.sh
+COPY ./scripts/prep-docker.sh prep-docker.sh
 
 RUN apk add --no-cache docker gpg gpg-agent tar
 RUN adduser jenkins docker
