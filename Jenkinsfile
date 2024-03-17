@@ -27,7 +27,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh '''
-                    find jenkins-* -maxdepth 1 -type d \\( ! -name . \\) -exec bash -c "cd {} && pwd && \\
+                    find jenkins-* -maxdepth 1 -type d \\( ! -name . \\) -exec bash -c "cp ./scripts ./{}/scripts -r && \\
+                        cd {} && pwd && \\
                         docker build -t $DOCKER_USER/{}:latest ." \\;
                     '''
             }
