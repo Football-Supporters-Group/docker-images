@@ -6,6 +6,7 @@ RUN apk add --no-cache docker gpg gpg-agent tar
 RUN adduser jenkins docker
 RUN chmod +x ./install-mvn.sh
 RUN chmod +x ./prep-docker.sh
+RUN ls
 RUN ./install-mvn.sh
 RUN ./prep-docker.sh
 
