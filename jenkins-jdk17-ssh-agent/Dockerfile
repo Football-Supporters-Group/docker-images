@@ -10,4 +10,4 @@ RUN ./install-mvn.sh
 
 VOLUME /var/run/docker.sock
 
-ENTRYPOINT ["/bin/bash", "-c", "./prep-docker.sh && setup-sshd"]
+ENTRYPOINT ["/bin/bash", "-c", "./prep-docker.sh & && setup-sshd"]
