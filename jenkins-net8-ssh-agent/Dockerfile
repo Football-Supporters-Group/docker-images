@@ -6,7 +6,6 @@ COPY ./scripts/prep-docker.sh prep-docker.sh
 RUN apk add --no-cache docker gpg gpg-agent tar
 RUN adduser jenkins docker
 RUN chmod +x ./prep-docker.sh
-RUN ./install-mvn.sh
 
 VOLUME /var/run/docker.sock
 
