@@ -1,6 +1,6 @@
-FROM jenkins/ssh-agent:alpine-jdk17 as agent
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 as base
 FROM mcr.microsoft.com/dotnet/sdk:8.0 as build
+FROM jenkins/ssh-agent:alpine-jdk17 as agent
 COPY ./scripts/prep-docker.sh prep-docker.sh
 
 RUN apk add --no-cache docker gpg gpg-agent tar
