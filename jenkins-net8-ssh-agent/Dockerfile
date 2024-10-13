@@ -8,7 +8,8 @@ COPY --from=base /usr/share/dotnet /usr/share/dotnet
 FROM jenkins/ssh-agent:alpine-jdk17 as agent
 COPY --from=build /usr/share/dotnet /usr/share/dotnet
 COPY --from=build /usr/bin/pwsh /usr/bin/pwsh
-RUN mkdir /usr/share/powershell
+RUN ls /usr/bin
+RUN mkdir -p /usr/share/powershell
 RUN ln -s /usr/share/powershell/pwsh /usr/bin/pwsh
 RUN chmod 755 /usr/share/powershell/pwsh
 COPY ./scripts/prep-docker.sh prep-docker.sh
