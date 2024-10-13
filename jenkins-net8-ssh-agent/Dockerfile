@@ -8,7 +8,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 as build
 
 FROM jenkins/ssh-agent:alpine-jdk17 as agent
 COPY --from=build ["/usr/share/dotnet", "/usr/share/dotnet"]
-COPY --from=build ["/dotnet-symlink", "/usr/bin"]
+# COPY --from=build ["/dotnet-symlink", "/usr/bin"]
 COPY --from=build ["/usr/share/powershell/pwsh", "/usr/share/powershell/pwsh"]
 
 # COPY --from=build /usr/share/dotnet /usr/share/dotnet
