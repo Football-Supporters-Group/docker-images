@@ -9,15 +9,17 @@ FROM jenkins/ssh-agent:alpine-jdk17 as agent
 COPY --from=build /usr/share/dotnet /usr/share/dotnet
 COPY --from=build /usr/bin/pwsh /usr/bin/pwsh
 RUN ls /usr/bin
+RUN ls /usr/share
 RUN mkdir -p /usr/share/powershell
-RUN ln -s /usr/share/powershell/pwsh /usr/bin/pwsh
-RUN chmod 755 /usr/share/powershell/pwsh
+
 COPY ./scripts/prep-docker.sh prep-docker.sh
+COPY ./scripts/wrap_powershell.sh wrap_powershell.sh
 
 RUN apk add --no-cache docker gpg gpg-agent tar
 RUN adduser jenkins docker
 RUN chmod +x ./prep-docker.sh
+RUN chmod +x ./wrap_powershell.sh
 
 VOLUME /var/run/docker.sock
 
-ENTRYPOINT ["/bin/bash", "-c", "prep-docker.sh ; setup-sshd"]
+ENTRYPOINT ["/bin/bash", "-c", "prep-docker.sh ; wrap_powershell.sh ; setup-sshd"]
