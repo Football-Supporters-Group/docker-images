@@ -11,7 +11,7 @@ COPY --from=build /usr/bin/pwsh /usr/bin/pwsh
 RUN mkdir -p /usr/share/powershell
 
 COPY ./scripts/*.sh .
-
+RUN ls .
 
 RUN apk add --no-cache docker gpg gpg-agent tar
 RUN adduser jenkins docker
