@@ -24,6 +24,12 @@ pipeline {
     }
 
     stages {
+        stage('Clean and Clone') {
+            steps {
+                cleanWs()
+                checkout scm
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 sh '''
