@@ -9,8 +9,8 @@ FROM jenkins/ssh-agent:alpine-jdk17 as agent
 COPY --from=build /usr/share/dotnet /usr/share/dotnet
 COPY --from=build /usr/bin/pwsh /usr/bin/pwsh
 RUN mkdir /usr/share/powershell
-RUN ln -s /usr/share/powershell/pwsh /usr/bin/pwsh \
-    && chmod 755 /usr/share/powershell/pwsh
+RUN ln -s /usr/share/powershell/pwsh /usr/bin/pwsh
+RUN chmod 755 /usr/share/powershell/pwsh
 COPY ./scripts/prep-docker.sh prep-docker.sh
 
 RUN apk add --no-cache docker gpg gpg-agent tar
