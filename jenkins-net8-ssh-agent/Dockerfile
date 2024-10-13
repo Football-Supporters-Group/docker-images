@@ -16,7 +16,7 @@ RUN ls .
 RUN apk add --no-cache docker gpg gpg-agent tar
 RUN adduser jenkins docker
 RUN chmod +x ./prep-docker.sh
-RUN chmod +x ./wrap_powershell.sh
+RUN chmod +x ./wrap-powershell.sh
 
 VOLUME /var/run/docker.sock
 
