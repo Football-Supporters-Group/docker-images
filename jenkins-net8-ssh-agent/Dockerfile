@@ -8,7 +8,7 @@ RUN ls .
 RUN apk add --no-cache \
     docker gpg gpg-agent tar ca-certificates-bundle \
     libgcc libssl3 libstdc++ zlib libgdiplus icu-libs \
-    less ncurses-terminfo-base krb5-libs libintl libssl1.1 \
+    less ncurses-terminfo-base krb5-libs libintl \
     tzdata userspace-rcu zlib curl
 RUN apk -X https://dl-cdn.alpinelinux.org/alpine/edge/main add --no-cache \
     lttng-ust
