@@ -34,6 +34,8 @@ RUN mkdir -p /opt/microsoft/powershell/7 \
     && echo 'export PSHOME=/opt/microsoft/powershell/7' >> ~/.bashrc\
     && echo 'export PATH=$PATH:$PSHOME' >> ~/.bashrc
 
+RUN cp ~/.bashrc /home/jenkins/.bashrc
+
 VOLUME /var/run/docker.sock
 
 ENTRYPOINT ["/bin/bash", "-c", "prep-docker.sh ; setup-sshd"]
