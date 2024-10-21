@@ -35,7 +35,7 @@ RUN mkdir -p /opt/microsoft/powershell/7 \
     && echo 'export PATH=$PATH:$PSHOME' >> ~/.bashrc
 
 RUN cp ~/.bashrc /home/jenkins/.bashrc \
-    && cp ~/.dotnet /home/jenkins/.dotnet \
+    && cp ~/.dotnet /home/jenkins/.dotnet -r \
     && chmod -R 777 /home/jenkins/.dotnet
 
 VOLUME /var/run/docker.sock
