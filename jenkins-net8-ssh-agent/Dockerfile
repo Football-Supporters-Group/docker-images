@@ -19,7 +19,8 @@ RUN chmod +x ./prep-docker.sh
 RUN chmod +x ./wrap-powershell.sh
 
 #Dotnet 8
-RUN wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh \
+RUN login jenkins \
+    && wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh \
     && chmod +x ./dotnet-install.sh \
     && ./dotnet-install.sh --channel 8.0 \
     && echo 'export DOTNET_ROOT=/root/.dotnet' >> ~/.bashrc \
