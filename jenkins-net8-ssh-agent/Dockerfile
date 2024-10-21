@@ -19,11 +19,10 @@ RUN chmod +x ./prep-docker.sh
 RUN chmod +x ./wrap-powershell.sh
 
 #Dotnet 8
-RUN login jenkins \
-    && wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh \
+RUN wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh \
     && chmod +x ./dotnet-install.sh \
     && ./dotnet-install.sh --channel 8.0 \
-    && echo 'export DOTNET_ROOT=/jenkins/.dotnet' >> ~/.bashrc \
+    && echo 'export DOTNET_ROOT=$HOME/.dotnet' >> ~/.bashrc \
     && echo 'export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools' >> ~/.bashrc
 
 #Powershell
@@ -35,7 +34,9 @@ RUN mkdir -p /opt/microsoft/powershell/7 \
     && echo 'export PSHOME=/opt/microsoft/powershell/7' >> ~/.bashrc\
     && echo 'export PATH=$PATH:$PSHOME' >> ~/.bashrc
 
-RUN cp ~/.bashrc /home/jenkins/.bashrc
+RUN cp ~/.bashrc /home/jenkins/.bashrc \
+    && cp ~/.docker /home/jenkins/.docker \
+    chmod -R 777 /home/jenkins/.docker
 
 VOLUME /var/run/docker.sock
 
