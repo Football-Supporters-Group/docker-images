@@ -36,7 +36,7 @@ RUN mkdir -p /opt/microsoft/powershell/7 \
 
 RUN cp ~/.bashrc /home/jenkins/.bashrc \
     && cp ~/.docker /home/jenkins/.docker \
-    chmod -R 777 /home/jenkins/.docker
+    && chmod -R 777 /home/jenkins/.docker
 
 VOLUME /var/run/docker.sock
 
